@@ -58,9 +58,9 @@ class Inventory():
             self.current_working_num.append(int(i))
     @param_parser
     def pop(self, *args, **kwargs):
-        if int(args[0]) < len(self.current_working_num):
+        try :
             self.current_working_num = self.current_working_num[:-int(args[0])] if args else self.current_working_num[:-1]
-        else:
+        except:
             print("Invalid input")
     @param_parser
     def show(self, *args, **kwargs):
@@ -72,24 +72,24 @@ class Inventory():
 
     @param_parser
     def index(self, *args, **kwargs):
-        if int(args[0]) in self.current_working_num :
+        try :
             output = self.current_working_num.index(int(args[0]))
             print(output)
-        else:
+        except:
             print("Invalid element")
 
     @param_parser
     def get(self, *args, **kwargs):
-        if int(args[0]) < len(self.current_working_num):
+        try:
             print(self.current_working_num[int(args[0])])
-        else:
+        except :
             print('Invalid Index')
 
     @param_parser
     def remove(self, *args, **kwargs):
-        if int(args[0]) < len(self.current_working_num):
+        try :
             _ = self.current_working_num.pop(int(args[0]))
-        else: 
+        except: 
             print('Invalid Index')
             
     @param_parser
@@ -98,9 +98,9 @@ class Inventory():
 
     @param_parser
     def popFront(self, num=1, *args, **kwargs):
-        if int(num) <= len(self.current_working_num):
+        try:
             self.current_working_num = self.current_working_num[int(num):]
-        else:
+        except:
             print('Invalid input')
     @param_parser
     def sort(self, *args, **kwargs):
