@@ -55,13 +55,19 @@ class Inventory():
     @param_parser
     def insert(self,*args, **kwargs):
         for i in args:
-            self.current_working_num.append(int(i))
+            try:
+                self.current_working_num.append(int(i))
+            except:
+                pass
     @param_parser
     def pop(self, *args, **kwargs):
-        try :
-            self.current_working_num = self.current_working_num[:-int(args[0])] if args else self.current_working_num[:-1]
-        except:
-            print("Invalid input")
+        if len(args) > 0:
+            self.current_working_num = self.current_working_num[:-int(args[0])]
+        elif len(args) == 0:
+            self.current_working_num = self.current_working_num[:-1]
+        else:
+            print('invalid input')
+            
     @param_parser
     def show(self, *args, **kwargs):
         print(self.current_working_num)
@@ -112,8 +118,11 @@ class Inventory():
 
     @param_parser
     def push(self, *args, **kwargs):
-        for i in args:
-          self.current_working_num.append(int(i))
+        try:
+            for i in args:
+                self.current_working_num.append(int(i))
+        except:
+            pass
 
     @param_parser
     def EOF(self, *args, **kwargs):
